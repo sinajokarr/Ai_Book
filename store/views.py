@@ -1,12 +1,10 @@
 from itertools import product, count
-
 from django.template.context_processors import request
 from rest_framework.decorators import permission_classes
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
-
 from config.wsgi import application
 from .models import Product, Order, Comment,Cart,Category,Customer,         artItem,Discount
 from django.db.models import Count, Min, Max, Avg, Q, OuterRef, Subquery,Sum
