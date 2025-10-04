@@ -29,7 +29,7 @@ class Product(models.Model):
     inventory = models.IntegerField(validators=[MinValueValidator(0)])
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
-    discounts = models.ManyToManyField(Discount, blank=True)
+    discounts = models.ManyToManyField(Discount, related_name='products', blank=True)
 
     def __str__(self):
         return self.name
@@ -53,7 +53,7 @@ class Address(models.Model):
     street = models.CharField(max_length=255)
 
 
-class UnpaidOrderManger(models.Manager):
+class UnpaidOrderManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status=Order.ORDER_STATUS_UNPAID)
 
@@ -73,7 +73,7 @@ class Order(models.Model):
     status = models.CharField(max_length=1, choices=ORDER_STATUS, default=ORDER_STATUS_UNPAID)
 
     objects = models.Manager()
-    unpaid_orders = UnpaidOrderManger()
+    unpaid_orders = UnpaidOrderManager()
 
     def __str__(self):
         return f'Order id={self.id}'
@@ -89,7 +89,7 @@ class OrderItem(models.Model):
         unique_together = [['order', 'product']]
 
 
-class CommentManger(models.Manager):
+class CommentManager(models.Manager):
     def get_approved(self):
         return self.get_queryset().filter(status=Comment.COMMENT_STATUS_APPROVED)
 
@@ -115,13 +115,12 @@ class Comment(models.Model):
     datetime_created = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=2, choices=COMMENT_STATUS, default=COMMENT_STATUS_WAITING)
 
-    objects = CommentManger()
+    objects = CommentManager()
     approved = ApprovedCommentManager()
 
 
 class Cart(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4)
-    #id = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
 
