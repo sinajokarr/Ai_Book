@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About – AI Learn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'store/css/courses.css' %}">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header__inner">
+        <a href="{% url 'courses_page' %}" class="site-header__brand">
+            <span class="site-header__logo">AI LEARN</span>
+            <span class="site-header__subtitle">Mind &amp; Code Architecture</span>
+        </a>
+        <nav class="site-header__nav">
+            <a href="{% url 'courses_page' %}" class="site-header__link">Courses</a>
+            <a href="{% url 'books_page' %}" class="site-header__link">Books</a>
+            <a href="{% url 'about_page' %}" class="site-header__link site-header__link--active">About</a>
+        </nav>
+        
+        <div id="cart-icon-container" class="site-header__cart-icon" title="View Cart">
+            🛒
+            <span id="cart-item-count" class="cart-badge" hidden>0</span>
+        </div>
+        </div>
+</header>
+
+<main class="page">
+
+    <section class="hero">
+        <div class="hero__content">
+            <p class="hero__eyebrow">The Intersection of Energy &amp; Intelligence</p>
+            <h1 class="hero__title">We build dual-core humans.</h1>
+            <p class="hero__text">
+                Welcome to the only platform engineered for the "Hybrid Creator." To win in the age of AI, 
+                you don't just need better prompts—you need a stronger nervous system. 
+                We combine quantum physics principles with enterprise-grade AI engineering.
+            </p>
+        </div>
+        <div class="hero__filters">
+            <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;">
+                <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Catalog Overview:</strong>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li>✨ <strong>Mindset:</strong> Dr. Joe Dispenza & James Clear</li>
+                    <li>🤖 <strong>AI Lab:</strong> ChatGPT & Midjourney V6</li>
+                    <li>🧘 <strong>Sanctuary:</strong> Alpha Waves & Subconscious</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses">
+        <div class="courses__header">
+            <div>
+                <h2 class="courses__title">The Mindset Library 📚</h2>
+                <p class="courses__subtitle">Essential reading to reprogram your self-image.</p>
+            </div>
+        </div>
+
+        <div class="courses__grid">
+            <article class="course-card" data-product-id="1">
+                <div class="course-card__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Dispenza">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Neuroscience</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Breaking the Habit of Being Yourself</h3>
+                    <div class="course-card__meta">
+                        <span>Dr. Joe Dispenza</span>
+                        <span class="course-card__dot"></span>
+                        <span>Hardcover</span>
+                    </div>
+                    <p class="course-card__description">
+                        The manual for losing your mind and creating a new one. Learn how to rewire your brain chemistry to become a new person.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$24.00</span>
+                    <button class="btn btn--primary js-add-cart">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="course-card" data-product-id="2">
+                <div class="course-card__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1494122474427-02c80e7f6124?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Atomic Habits">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">System</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Atomic Habits</h3>
+                    <div class="course-card__meta">
+                        <span>James Clear</span>
+                        <span class="course-card__dot"></span>
+                        <span>Paperback</span>
+                    </div>
+                    <p class="course-card__description">
+                        You don't rise to the level of your goals, you fall to the level of your systems. A masterclass in small improvements.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$18.50</span>
+                    <button class="btn btn--primary js-add-cart">Add to Cart</button>
+                </div>
+            </article>
+            
+             <article class="course-card" data-product-id="3">
+                <div class="course-card__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Psycho Cybernetics">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Classic</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Psycho-Cybernetics</h3>
+                    <div class="course-card__meta">
+                        <span>Maxwell Maltz</span>
+                        <span class="course-card__dot"></span>
+                        <span>Paperback</span>
+                    </div>
+                    <p class="course-card__description">
+                         Understand how your self-image acts as a "thermostat" that controls your success, and how to reset it.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$16.99</span>
+                    <button class="btn btn--primary js-add-cart">Add to Cart</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="courses" style="margin-top: 5rem;">
+        <div class="courses__header">
+            <div>
+                <h2 class="courses__title">The AI Lab 🤖</h2>
+                <p class="courses__subtitle">High-leverage training for the modern creator.</p>
+            </div>
+        </div>
+
+        <div class="courses__grid">
+            <article class="course-card" data-product-id="4">
+                <div class="course-card__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="AI">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--tag">Engineering</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">ChatGPT Enterprise Mastery</h3>
+                    <div class="course-card__meta">
+                        <span>15 Hours</span>
+                        <span class="course-card__dot"></span>
+                        <span>Advanced</span>
+                    </div>
+                    <p class="course-card__description">
+                        Move beyond basic prompts. Learn "Chain of Thought" reasoning and building custom GPTs for business automation.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$149.00</span>
+                    <button class="btn btn--primary js-add-cart">Join Course</button>
+                </div>
+            </article>
+
+            <article class="course-card" data-product-id="5">
+                <div class="course-card__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Midjourney">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--tag">Creative</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Midjourney V6 Architecture</h3>
+                    <div class="course-card__meta">
+                        <span>8 Hours</span>
+                        <span class="course-card__dot"></span>
+                        <span>Visuals</span>
+                    </div>
+                    <p class="course-card__description">
+                        Create award-winning brand assets and hyper-realistic photography. Master parameters like --stylize and multi-prompting.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$89.00</span>
+                    <button class="btn btn--primary js-add-cart">Join Course</button>
+                </div>
+            </article>
+
+            <article class="course-card" data-product-id="6">
+                <div class="course-card__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Python">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--tag">Backend</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Python for Automation</h3>
+                    <div class="course-card__meta">
+                        <span>22 Hours</span>
+                        <span class="course-card__dot"></span>
+                        <span>Coding</span>
+                    </div>
+                    <p class="course-card__description">
+                        Don't just use tools, build them. Script bots that scrape data, send emails, and connect APIs to save 20+ hours a week.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$199.00</span>
+                    <button class="btn btn--primary js-add-cart">Join Course</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="courses" style="margin-top: 5rem;">
+        <div class="courses__header">
+            <div>
+                <h2 class="courses__title">The Inner Sanctuary 🧘</h2>
+                <p class="courses__subtitle">Architecting the internal world.</p>
+            </div>
+        </div>
+
+        <div class="courses__grid">
+            <article class="course-card" data-product-id="7">
+                <div class="course-card__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Alpha">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Brainwaves</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Alpha State Protocol</h3>
+                    <div class="course-card__meta">
+                        <span>Audio Series</span>
+                        <span class="course-card__dot"></span>
+                        <span>Focus</span>
+                    </div>
+                    <p class="course-card__description">
+                        Shift from "Beta" (stress) to "Alpha" (creation) on command. Ideal for deep coding sessions or creative problem solving.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$49.00</span>
+                    <button class="btn btn--primary js-add-cart">Start</button>
+                </div>
+            </article>
+
+            <article class="course-card" data-product-id="8">
+                <div class="course-card__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1528319725582-ddc096101511?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Chakra">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Energy</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Energy Centers Blessing</h3>
+                    <div class="course-card__meta">
+                        <span>Guided</span>
+                        <span class="course-card__dot"></span>
+                        <span>Dispenza Style</span>
+                    </div>
+                    <p class="course-card__description">
+                        Unstuck energy from the lower 3 centers (survival) and move it to the heart and brain for elevated consciousness.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$35.00</span>
+                    <button class="btn btn--primary js-add-cart">Start</button>
+                </div>
+            </article>
+
+            <article class="course-card" data-product-id="9">
+                <div class="course-card__image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Subconscious">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Sleep</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Subconscious Reprogramming</h3>
+                    <div class="course-card__meta">
+                        <span>Nightly</span>
+                        <span class="course-card__dot"></span>
+                        <span>Theta</span>
+                    </div>
+                    <p class="course-card__description">
+                        Bypass the analytical mind. Use the theta state just before sleep to install new beliefs about wealth and capability.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$59.00</span>
+                    <button class="btn btn--primary js-add-cart">Start</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p class="site-footer__text">© 2025 AI Learn. Designed for the Architects of the Future.</p>
+</footer>
+
+<script src="{% static 'store/js/courses.js' %}"></script>
+
+</body>
+</html>

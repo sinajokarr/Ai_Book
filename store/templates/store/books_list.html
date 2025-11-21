@@ -1,0 +1,362 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block page_title %}The Archive – AI Learn{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'store/css/courses.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="bg-fx">
+    <div class="bg-fx__grid"></div>
+    <div class="bg-fx__glow" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 60%);"></div>
+</div>
+
+<header class="site-header">
+    <div class="site-header__inner">
+        <a href="{% url 'courses_page' %}" class="site-header__brand">
+            <span class="site-header__logo">AI LEARN</span>
+            <span class="site-header__subtitle">Mind &amp; Code Architecture</span>
+        </a>
+
+        <nav class="site-header__nav">
+            <a href="{% url 'courses_page' %}" class="site-header__link">Courses</a>
+            <a href="{% url 'books_page' %}" class="site-header__link site-header__link--active">Books</a>
+            <a href="{% url 'about_page' %}" class="site-header__link">About</a>
+        </nav>
+        
+        <div id="cart-icon-container" class="site-header__cart-icon" title="View Cart">
+            🛒
+            <span id="cart-item-count" class="cart-badge" hidden>0</span>
+        </div>
+        </div>
+</header>
+
+<main class="page">
+    
+    <section class="archive-hero">
+        <div class="archive-hero__content">
+            <div class="archive-badge">/// KNOWLEDGE BASE</div>
+            <h1 class="archive-hero__title">The Digital <span class="serif-text">Archive.</span></h1>
+            <p class="archive-hero__text">
+                A curated collection of high-frequency signals. 
+                We have selected only the books that bridge the gap between 
+                <strong>Ancient Wisdom</strong> and <strong>Modern Systems</strong>.
+            </p>
+        </div>
+        
+        <div class="archive-stats">
+            <div class="stat-item">
+                <span class="stat-num">05</span>
+                <span class="stat-label">Curated Titles</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">AI</span>
+                <span class="stat-label">System Focus</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">ZEN</span>
+                <span class="stat-label">Mindset Focus</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="books-section">
+        
+        <div class="section-divider">
+            <span>/// SHELF 01: NEUROSCIENCE &amp; MEDITATION</span>
+        </div>
+
+        <div class="courses__grid">
+            <article class="course-card book-card" style="--glow-color: #8b5cf6;" data-product-id="10">
+                <div class="course-card__image-wrapper book-cover">
+                    
+                    <img src="https://images.unsplash.com/photo-1555445054-74921275fb8e?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Quantum Meditation">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Masterclass</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Deep Quantum Practice</h3>
+                    <div class="course-card__meta">
+                        <span>Dispenza Style</span>
+                        <span class="course-card__dot"></span>
+                        <span>Hardcover</span>
+                    </div>
+                    <p class="course-card__description">
+                        Go beyond the analytical mind. A guide to releasing stored emotions and rehearsing your future self using elevated emotions and clear intention.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$39.00</span>
+                    <button class="btn btn--primary js-add-cart">Add to Library</button>
+                </div>
+            </article>
+
+            <article class="course-card book-card" style="--glow-color: #10b981;" data-product-id="11">
+                <div class="course-card__image-wrapper book-cover">
+                    
+                    <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Spiritual Discipline">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Routine</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Spiritual Discipline</h3>
+                    <div class="course-card__meta">
+                        <span>High Performance</span>
+                        <span class="course-card__dot"></span>
+                        <span>Paperback</span>
+                    </div>
+                    <p class="course-card__description">
+                        How to pray, meditate, and journal while building startups. The ultimate guide for creators who refuse to burn out.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$29.00</span>
+                    <button class="btn btn--primary js-add-cart">Add to Library</button>
+                </div>
+            </article>
+        </div>
+
+        <div class="section-divider" style="margin-top: 4rem;">
+            <span>/// SHELF 02: BUSINESS &amp; STRATEGY</span>
+        </div>
+
+        <div class="courses__grid">
+             <article class="course-card book-card" style="--glow-color: #f59e0b;" data-product-id="12">
+                <div class="course-card__image-wrapper book-cover">
+                    
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Energy Kebab">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Motivation</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Energy Kebab for Entrepreneurs</h3>
+                    <div class="course-card__meta">
+                        <span>Strategy Bites</span>
+                        <span class="course-card__dot"></span>
+                        <span>Best Seller</span>
+                    </div>
+                    <p class="course-card__description">
+                        Short, powerful "skewers" of mindset and strategy. Clear frameworks and questions that push you to take the next brave step immediately.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$24.00</span>
+                    <button class="btn btn--primary js-add-cart">Add to Library</button>
+                </div>
+            </article>
+
+            <article class="course-card book-card" style="--glow-color: #3b82f6;" data-product-id="13">
+                <div class="course-card__image-wrapper book-cover">
+                     
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="AI Playbook">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Technical</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">AI Playbook for Business</h3>
+                    <div class="course-card__meta">
+                        <span>Automation</span>
+                        <span class="course-card__dot"></span>
+                        <span>Guide</span>
+                    </div>
+                    <p class="course-card__description">
+                        A field guide for ChatGPT, Claude, and Midjourney. Learn to design offers, write content, and test ideas as a solo creator.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$34.00</span>
+                    <button class="btn btn--primary js-add-cart">Add to Library</button>
+                </div>
+            </article>
+
+            <article class="course-card book-card" style="--glow-color: #ec4899;" data-product-id="14">
+                <div class="course-card__image-wrapper book-cover">
+                     
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" class="course-card__image" alt="Calm Money">
+                    <div class="course-card__badge-group">
+                        <span class="course-card__badge course-card__badge--type">Finance</span>
+                    </div>
+                </div>
+                <div class="course-card__body">
+                    <h3 class="course-card__title">Calm Money for Creators</h3>
+                    <div class="course-card__meta">
+                        <span>Wealth Mindset</span>
+                        <span class="course-card__dot"></span>
+                        <span>Handbook</span>
+                    </div>
+                    <p class="course-card__description">
+                        Move from random gigs to stable income. Concrete steps for building a portfolio, raising prices, and understanding self-worth.
+                    </p>
+                </div>
+                <div class="course-card__bottom">
+                    <span class="course-card__price-main">$31.00</span>
+                    <button class="btn btn--primary js-add-cart">Add to Library</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p class="site-footer__text">
+        © {{ now|default:"2025" }} AI Learn. Designed for the Architects of the Future.
+    </p>
+</footer>
+
+<style>
+    /* 1. BACKGROUND FX FROM MAIN CSS IS USED */
+    /* ... (CSS Styles from original file) ... */
+    
+    /* 2. ARCHIVE HERO */
+    .archive-hero {
+        text-align: center;
+        padding: 4rem 1rem;
+        position: relative;
+        margin-bottom: 3rem;
+    }
+
+    .archive-badge {
+        display: inline-block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.1);
+        padding: 6px 12px;
+        border-radius: 99px;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .archive-hero__title {
+        font-size: 4rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1.5rem;
+        line-height: 1;
+    }
+
+    .serif-text {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-weight: 400;
+        color: #10b981; /* Emerald accent */
+    }
+
+    .archive-hero__text {
+        font-size: 1.1rem;
+        color: #94a3b8;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    .archive-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding: 1.5rem 0;
+        background: rgba(0,0,0,0.2);
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        color: #64748b;
+        margin-top: 0.25rem;
+        letter-spacing: 0.05em;
+    }
+
+    /* 3. SECTION DIVIDER */
+    .section-divider {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        color: #64748b;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+    }
+
+    .section-divider::after {
+        content: '';
+        flex-grow: 1;
+        height: 1px;
+        background: rgba(255,255,255,0.1);
+        margin-left: 1rem;
+    }
+
+    /* 4. BOOK CARD ENHANCEMENTS */
+    .book-card {
+        /* Each book can have a custom glow color var */
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .book-card:hover {
+        border-color: var(--glow-color, #fff);
+        box-shadow: 0 10px 40px -10px var(--glow-color, rgba(255,255,255,0.2));
+        /* The courses.js adds 3D tilt, so transform on hover must be managed carefully */
+        /* Since this is a static page, we rely on the JS for mousemove/mouseleave if enabled */
+        transform: translateY(-10px) scale(1.02);
+    }
+
+    /* 5. RESPONSIVE */
+    @media (max-width: 768px) {
+        .archive-hero__title {
+            font-size: 2.5rem;
+        }
+        .archive-stats {
+            gap: 1.5rem;
+        }
+    }
+    
+    /* NEW STYLE: Ensure the cart badge looks good */
+    .site-header__cart-icon {
+        position: relative;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+    }
+    .cart-badge {
+        position: absolute;
+        top: 0px;
+        right: -8px;
+        background-color: #ef4444; /* Red */
+        color: white;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        line-height: 1;
+        border: 1px solid #0f172a; /* Dark background color */
+    }
+</style>
+
+<script src="{% static 'store/js/courses.js' %}"></script>
+
+</body>
+</html>

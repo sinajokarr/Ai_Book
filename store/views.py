@@ -12,6 +12,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Product, Order, Comment, Cart, Category, Customer, CartItem, Discount
 from .serializers import CategorySerializer, ProductSerializer, DiscountSerializer, CommentSerializer, CartSerializer
 from .filters import ProductFilter
+from django.shortcuts import render
 
 
 class CategoryViewSet(ReadOnlyModelViewSet):
@@ -50,12 +51,19 @@ class ProductViewSet(ReadOnlyModelViewSet):
     ordering = ["-total_sold"]
 
     def get_queryset(self):
+        best_discount = Subquery(
+            Discount.objects
+            .filter(products__pk=OuterRef('pk'))
+            .order_by('-discount')
+            .values('discount')[:1]
+        )
+        
         return (
             Product.objects
             .select_related("category")
             .prefetch_related("discounts")
             .annotate(
-                best_discount_percent=Coalesce(Max("discounts__discount"), 0.0),
+                best_discount_percent=Coalesce(best_discount, 0.0),
                 approved_comments_count=Count(
                     "comments",
                     filter=Q(comments__status=Comment.COMMENT_STATUS_APPROVED),
@@ -73,7 +81,7 @@ class DiscountViewSet(ReadOnlyModelViewSet):
     serializer_class = DiscountSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ["description"]
-    ordering_fields = ["discount", "application_count"]
+    ordering_fields = ["discount", ]
     ordering = ["-discount"]
 
     def get_queryset(self):
@@ -106,14 +114,39 @@ class CommentViewSet(ModelViewSet):
 
 
 class CartViewSet(ModelViewSet):
-    queryset = Cart.objects.prefetch_related("items__product")
+    # Set lookup_field to 'id' since Cart uses UUID as primary key
+    lookup_field = 'id'
     serializer_class = CartSerializer
 
+    def get_queryset(self):
+        # Annotate products in cart items for final_price calculation
+        best_discount = Subquery(
+            Discount.objects
+            .filter(products__pk=OuterRef('product'))
+            .order_by('-discount')
+            .values('discount')[:1]
+        )
+        
+        return Cart.objects.prefetch_related(
+            'items__product'
+        ).annotate(
+            best_discount_percent=Coalesce(best_discount, 0.0)
+        )
+
+
+    def create(self, request, *args, **kwargs):
+        # Custom create to just generate a new Cart UUID
+        cart = Cart.objects.create()
+        serializer = self.get_serializer(cart)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
     @action(detail=True, methods=["post"])
-    def add_item(self, request, pk=None):
+    def add_item(self, request, id=None):
+        # Use 'id' from lookup_field instead of 'pk'
         cart = self.get_object()
         product_id = request.data.get("product_id")
         quantity = request.data.get("quantity", 1)
+        
         try:
             quantity = int(quantity)
         except (TypeError, ValueError):
@@ -122,10 +155,26 @@ class CartViewSet(ModelViewSet):
             return Response({"detail": "quantity must be > 0"}, status=status.HTTP_400_BAD_REQUEST)
         if not product_id:
             return Response({"detail": "product_id is required"}, status=status.HTTP_400_BAD_REQUEST)
+        
         product = get_object_or_404(Product, pk=product_id)
+        
         item, created = CartItem.objects.get_or_create(cart=cart, product=product, defaults={"quantity": quantity})
         if not created:
+            # Safely increment quantity
             item.quantity = F("quantity") + quantity
             item.save(update_fields=["quantity"])
             item.refresh_from_db()
-        return Response({"detail": "item added", "item_id": item.id, "quantity": item.quantity}, status=status.HTTP_200_OK)
+
+        # Serialize the updated cart to return total items/price
+        cart_serializer = self.get_serializer(cart)
+        return Response(cart_serializer.data, status=status.HTTP_200_OK)
+    
+    
+def courses_page(request):
+    return render(request, "store/courses_list.html")
+
+def books_page(request):
+    return render(request, "store/books_list.html")
+
+def about_page(request):
+    return render(request, "store/about.html")
